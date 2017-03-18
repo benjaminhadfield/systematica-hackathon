@@ -20,6 +20,7 @@ app.use(webpackDevMiddleware(webpack(webpackConfig)))
 app.use(bodyParser.urlencoded({extended: false}))
 
 
+
 // While server is Running Add to ML DB
 dataSocket.emit('subscribe', ['AAPL', 'AMD', 'BAC', 'BMY', 'C', 'CSCO', "CYH", 'FB', 'FCX', 'GE', 'INTC', 'MDLZ', 'MSFT', 'WMT', 'MU', 'INTC', 'PFE', 'VZ', "WFX", 'WMT', 'XOM'])
 dataSocket.on('onMarketData', (data) => {
