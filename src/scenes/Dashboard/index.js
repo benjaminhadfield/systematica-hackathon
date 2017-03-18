@@ -21,7 +21,7 @@ export default class Dashboard extends React.Component {
         this.socket = io('/')
         this.socket.on('recievedUserMarketData', (data) => {
             if (data.bid) {
-                this.setState((prev) => ({marketData: [...prev.marketData, data].slice(-25)}))
+                this.setState((prev) => ({marketData: [data, ...prev.marketData].slice(0, 25)}))
             }
         })
         io.socket.sockets.emit('predict', this.state.marketData)

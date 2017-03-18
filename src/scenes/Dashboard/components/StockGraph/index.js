@@ -10,7 +10,7 @@ export const StockGraph = ({marketData, ...props}) => {
     return (
             <LineChart width={500} height={400} data={formatMarketData(marketData)}>
                 <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                <YAxis/>
+                <YAxis type="number" domain={['auto', 'auto']}/>
                 <XAxis/>
                 <Tooltip/>
             </LineChart>
