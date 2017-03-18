@@ -29,13 +29,13 @@ io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
 })
 
-io.on('preditct', (values) => {
+io.on('predict', (values) => {
   values = values.map(v => {
     if (v == undefined) return 0;
     return v.bid;
   })
   var predicted = reg_model.preditct(values)
-  io.emit(predicted)
+  io.emit('pred-res',predicted)
 })
 
 
