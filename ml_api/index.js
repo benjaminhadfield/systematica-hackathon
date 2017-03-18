@@ -9,7 +9,6 @@ const http = require('http')
 
 const httpServer = http.Server(app)
 const io = server(httpServer)
-const dataSocket = client.connect('http://127.0.0.1:3000')
 
 
 //ML Classifiers
@@ -30,13 +29,13 @@ io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
 })
 
-io.on('predict', (values) => {
-  values = values.map((v) =>{
-    if (v) return v.bid;
-    else return 0;
+io.on('preditct', (values) => {
+  values = values.map(v => {
+    if (v == undefined) return 0;
+    return v.bid;
   })
-  var predicted = reg_model.predict(values)
-  io.emit(predicted.map((p) => {bid:p}))
+  var predicted = reg_model.preditct(values)
+  io.emit(predicted)
 })
 
 
