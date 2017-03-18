@@ -1,0 +1,6 @@
+@import "variables/spacing";
+
+.container {
+    padding: $sd-space;
+    box-sizing: border-box;
+}

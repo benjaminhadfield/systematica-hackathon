@@ -1,0 +1,8 @@
+@import "variables/colour";
+@import "variables/spacing";
+
+.container {
+    background: $blue;
+    color: white;
+    flex: 1;
+}

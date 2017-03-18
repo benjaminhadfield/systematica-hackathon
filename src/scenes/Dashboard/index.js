@@ -1,12 +1,11 @@
 import React from 'react'
 import styles from './styles.scss'
-import AddMoney from './components/AddMoney'
+import MoneyTracker from 'Components/MoneyTracker'
 
-export const Dashboard  = (props) => {
+export const Dashboard = (props) => {
     return (
         <div>
-            <p>Dashboard...</p>
-            <AddMoney/>
+            <MoneyTracker/>
         </div>
     )
 }
