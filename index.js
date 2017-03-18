@@ -7,6 +7,13 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackConfig = require('./webpack.config.js')
 const connection = require('./server/database')
+// const sql = require('sql')
+// var connection = mysql.createConnection({
+//   host     : ' tcp://0.tcp.ngrok.io:17105',
+//   user     : 'root',
+//   password : 'root'
+// });
+// connection.connect();
 
 const app = express()
 const httpServer = http.Server(app)
@@ -18,7 +25,7 @@ app.use(webpackDevMiddleware(webpack(webpackConfig)))
 app.use(bodyParser.urlencoded({extended: false}))
 
 // connect to the data source
-dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
+dataSocket.emit('subscribe', ['AAPL'])
 dataSocket.on('onMarketData', (data) => console.log('data', data))
 
 // on client connection
