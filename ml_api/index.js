@@ -28,12 +28,15 @@ setInterval(function(){
 
 io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
+})
 
-    // connect to the data source
-    dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
-    dataSocket.on('onMarketData', function(data){
-      console.log('data', data)
-    })
+io.on('predict', (values) => {
+  values = values.map((v) =>{
+    if (v) return v.bid;
+    else return 0;
+  })
+  var predicted = reg_model.predict(values)
+  io.emit(predicted.map((p) => {bid:p}))
 })
 
 
