@@ -1,5 +1,5 @@
 module.exports = {
-    context: __dirname,
+    entry: __dirname + '/src',
     devtool: 'source-maps',
     output: {
         filename: 'bundle.js',
