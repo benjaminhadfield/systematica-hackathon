@@ -3,3 +3,23 @@
     display: block;
     padding: 9px;
 }
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.title {
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.symbol {
+    display: inline-block;
+    padding: 2px 4px;
+    margin: 0 3px 0 0;
+    background: #fe798f;
+    color: white;
+}
