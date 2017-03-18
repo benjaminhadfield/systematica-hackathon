@@ -9,7 +9,6 @@ const http = require('http')
 
 const httpServer = http.Server(app)
 const io = server(httpServer)
-const dataSocket = client.connect('http://127.0.0.1:3000')
 
 
 //ML Classifiers
@@ -28,12 +27,15 @@ setInterval(function(){
 
 io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
+})
 
-    // connect to the data source
-    dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
-    dataSocket.on('onMarketData', function(data){
-      console.log('data', data)
-    })
+io.on('preditct', (values) => {
+  values = values.map(v => {
+    if (v == undefined) return 0;
+    return v.bid;
+  })
+  var predicted = reg_model.preditct(values)
+  io.emit(predicted)
 })
 
 
