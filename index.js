@@ -20,20 +20,13 @@ app.use(webpackDevMiddleware(webpack(webpackConfig)))
 app.use(bodyParser.urlencoded({extended: false}))
 
 
-
-// While server is Running Add to ML DB
-dataSocket.emit('subscribe', ['AAPL', 'AMD', 'BAC', 'BMY', 'C', 'CSCO', "CYH", 'FB', 'FCX', 'GE', 'INTC', 'MDLZ', 'MSFT', 'WMT', 'MU', 'INTC', 'PFE', 'VZ', "WFX", 'WMT', 'XOM'])
-dataSocket.on('onMarketData', (data) => {
-  temp = new Entry(data);
-  temp.save((err)=>{if (err) console.log(err)});
-})
-
-
 // on client connection
 io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
     dataSocket.emit('subscribe', ['AAPL'])
-    dataSocket.on('onMarketData', (data) => socket.broadcast.emit('recievedUserMarketData', data))
+    dataSocket.on('onMarketData', (data) => {
+        socket.broadcast.emit('recievedUserMarketData', data)
+    })
 })
 
 httpServer.listen(3000, () => {

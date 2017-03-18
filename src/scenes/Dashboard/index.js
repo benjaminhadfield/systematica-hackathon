@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             balance: 0,
             lastDeposit: 0,
-            marketData: []
+            marketData: [...Array(25)].map(i => 0)
         }
     }
 
@@ -21,10 +21,10 @@ export default class Dashboard extends React.Component {
         this.socket = io('/')
         this.socket.on('recievedUserMarketData', (data) => {
             if (data.bid) {
-                console.log(data)
                 this.setState((prev) => ({marketData: [...prev.marketData, data].slice(-25)}))
             }
         })
+        io.socket.sockets.emit('predict', this.state.marketData)
     }
 
     updateBalance = (amount) => this.setState((prev) => ({balance: prev.balance + amount, lastDeposit: amount}))
