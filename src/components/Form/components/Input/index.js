@@ -12,7 +12,7 @@ export const Input = ({name, ...props}) => {
             <input
                 id={`input-${name}`}
                 className={styles.input}
-                placeholder={capitaliseFirst(name)}
+                placeholder="Type here..."
                 name={name}
                 type="text"
                 {...props}/>

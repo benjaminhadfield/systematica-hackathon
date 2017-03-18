@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: __dirname + '/src/App.js',
+    entry: __dirname + '/src',
     devtool: 'source-maps',
     resolve: {
         alias: {

@@ -8,14 +8,29 @@ body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-size: 12px;
 }
 
 html {
-    font: 13px 'Helvetica Neue', sans-serif;
     color: $type;
 }
 
 body {
     color: inherit;
     font: inherit
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-type;
+}
+
+body,
+input,
+p {
+    font-family: $body-type;
 }
