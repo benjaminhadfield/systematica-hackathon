@@ -17,15 +17,15 @@ app.use(express.static(__dirname + '/public'))
 app.use(webpackDevMiddleware(webpack(webpackConfig)))
 app.use(bodyParser.urlencoded({extended: false}))
 
-// connect to the data source
-dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
-dataSocket.on('onMarketData', (data) => console.log('data', data))
 
 // on client connection
 io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
+    
+    // connect to the data source
+    dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
+    dataSocket.on('onMarketData', (data) => console.log('data', data))
 })
-
 
 httpServer.listen(3000, () => {
     console.log('listening on :3000')
