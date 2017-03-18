@@ -1,0 +1,17 @@
+.container,
+.input,
+.label{
+    width: 100%;
+    display: block;
+}
+
+.label {
+    margin: 0 0 5px;
+}
+
+.input {
+    margin: 0;
+    padding: 7px 10px;
+    font-size: 1em;
+    line-height: 1em;
+}

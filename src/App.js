@@ -1,20 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
+import Dashboard from './scenes/Dashboard'
 
 class App extends React.Component {
     componentDidMount() {
-        // this.socket = io('/')
-
-        // this.dataSocket = io('http://emsapi.eu-west-2.elasticbeanstalk.com')
-        // this.dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
-        // this.dataSocket.on('onMarketData', (data) => console.log('data', data))
+        // connect to socket.io
+        this.socket = io('/')
     }
 
     render() {
         return (
             <div>
-                <p>Hey</p>
+                <Dashboard/>
             </div>
         )
     }
