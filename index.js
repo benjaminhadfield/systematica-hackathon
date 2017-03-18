@@ -32,12 +32,8 @@ dataSocket.on('onMarketData', (data) => {
 // on client connection
 io.on('connection', (socket) => {
     console.log(`client connected (${socket.id})`)
-
-    // connect to the data source
-    dataSocket.emit('subscribe', ['AAPL', 'MSFT'])
-    dataSocket.on('onMarketData', function(data){
-      console.log('data', data)
-    })
+    dataSocket.emit('subscribe', ['AAPL'])
+    dataSocket.on('onMarketData', (data) => socket.broadcast.emit('recievedUserMarketData', data))
 })
 
 httpServer.listen(3000, () => {

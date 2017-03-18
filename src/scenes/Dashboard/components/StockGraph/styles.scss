@@ -1,0 +1,9 @@
+@import "variables/colour";
+@import "variables/spacing";
+
+.container {
+    flex: 2;
+    padding: $sd-space;
+    background: $grey;
+    border: 1px solid #999;
+}

@@ -1,6 +1,14 @@
+const path = require('path')
+
 module.exports = {
-    entry: __dirname + '/src/App.js',
+    entry: __dirname + '/src',
     devtool: 'source-maps',
+    resolve: {
+        alias: {
+            Components: path.resolve('src', 'components'),
+            Services: path.resolve('src', 'services'),
+        }
+    },
     output: {
         filename: 'bundle.js',
         path: '/'
@@ -11,7 +19,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
+                options: {
                     presets: ['es2015', 'react'],
                     plugins: ['transform-class-properties']
                 }
@@ -27,7 +35,12 @@ module.exports = {
                             localIdentName: '[hash:base64:3]'
                         }
                     },
-                    {loader: 'scss-loader'},
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [path.resolve('./src/styles')]
+                        }
+                    },
                 ]
             },
             {
