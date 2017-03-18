@@ -35,7 +35,7 @@ io.on('preditct', (values) => {
     return v.bid;
   })
   var predicted = reg_model.preditct(values)
-  io.emit(predicted)
+  io.emit('pred-res',predicted)
 })
 
 

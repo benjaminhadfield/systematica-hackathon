@@ -12,7 +12,8 @@ export default class Dashboard extends React.Component {
         this.state = {
             balance: 0,
             lastDeposit: 0,
-            marketData: [...Array(25)].map(i => 0)
+            marketData: [...Array(25)].map(i => 0),
+            predictedData: []
         }
     }
 
@@ -25,12 +26,15 @@ export default class Dashboard extends React.Component {
             }
         })
         io.socket.sockets.emit('predict', this.state.marketData)
+        io.on('pred-res', (data) => {
+          this.setState({predictedData: data})
+        })
     }
 
     updateBalance = (amount) => this.setState((prev) => ({balance: prev.balance + amount, lastDeposit: amount}))
 
     render() {
-        let {balance, lastDeposit, marketData} = this.state
+        let {balance, lastDeposit, marketData, predictedData} = this.state
         return (
             <div className={styles.container}>
                 <MoneyTracker
@@ -40,7 +44,7 @@ export default class Dashboard extends React.Component {
                 <StockGraph
                     marketData={marketData}/>
                 <Ticker
-                    marketData={marketData}/>
+                    marketData={[...marketData, ...predictedData]}/>
             </div>
         )
     }
