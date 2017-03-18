@@ -11,7 +11,6 @@ export const Ticker = ({marketData, ...props}) => {
             <ul className={styles.list}>
             {
                 marketData.map((item, i) => {
-                    console.log(':)', item)
                     const formattedDate = moment(item.time).format('HH:m ss:SSS')
                     const price = '$' + (item.bid || '')
                     return (
