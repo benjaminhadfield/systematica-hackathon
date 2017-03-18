@@ -2,7 +2,8 @@
 @import "variables/spacing";
 
 .container {
+    flex: 1;
     background: $blue;
     color: white;
-    flex: 1;
+    margin: 0;
 }

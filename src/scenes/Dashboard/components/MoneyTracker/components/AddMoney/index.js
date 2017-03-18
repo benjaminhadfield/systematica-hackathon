@@ -15,13 +15,13 @@ export class AddMoney extends React.Component {
         if (amount === '' || Number.isInteger(parseInt(amount))) {
             amount = amount ? parseInt(amount) : 0
             this.setState({amount})
-            e.target.value = ''
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.onSubmit(this.state.amount)
+        this.setState({amount: ''})
     }
 
     render() {
