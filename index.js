@@ -7,8 +7,7 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackConfig = require('./webpack.config.js')
 const connection = require('./server/database')
-var Entry = require('./models/entry.js')(connection)
-
+const Entry = require('./models/entry.js')(connection)
 
 const app = express()
 const httpServer = http.Server(app)
