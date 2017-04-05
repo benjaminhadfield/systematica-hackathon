@@ -15,4 +15,4 @@ Checkout [package.json](https://github.com/benjaminhadfield/systematica-hackatho
 
 ## Results
 
-We came 4th 🏁 _(So close to winning a £25 voucher 😅)_.
+We came 4th 🏁
